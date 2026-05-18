@@ -1,0 +1,27 @@
+# Cocos Creator
+library/
+temp/
+local/
+profiles/
+.creator/
+node_modules/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build
+build/
+
+# Prototype specific
+prototype/NewProject/library/
+prototype/NewProject/temp/
+prototype/NewProject/local/
+prototype/NewProject/profiles/
+prototype/NewProject/.creator/
+prototype/NewProject/.git/
+prototype/NewProject/node_modules/
