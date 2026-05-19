@@ -113,19 +113,8 @@ export class GameManagerComp extends Component {
                 ['📐 矩形', ()=>{ this.tool='rect'; this.updateToolHint(); this.closeMenu(); }],
             ];
         }else if(type==='scavenge'){
-            const tryScav = (region: string) => {
-                const g = this.game;
-                if(g.scavenge.active){ this.showMsg('已有探索队在外'); return; }
-                if(!g.vehicle.hasUnlock(region)){ this.showMsg(`需要载具才能前往`); return; }
-                if(g.scavenge.getDepletion(region) >= 90){ this.showMsg('该区域已被搜刮殆尽'); return; }
-                if(!g.inventory.has('fuel_wood', g.scavenge.getRegion(region)?.fuel||0)){ this.showMsg('燃料不足'); return; }
-                g.scavengeCmd(region);
-            };
-            items = [
-                ['🏘 郊区', ()=>{ tryScav('suburb'); }],
-                ['🏬 商业街', ()=>{ tryScav('commercial'); }],
-                ['🏥 医院', ()=>{ tryScav('hospital'); }],
-            ];
+            this.showMap();
+            return;
         }else if(type==='base'){
             const g = this.game;
             items = [
@@ -133,7 +122,14 @@ export class GameManagerComp extends Component {
                     if(!g.inventory.has('mat_wood',8)){ this.showMsg('需要 木材×8'); return; }
                     if(!g.inventory.has('mat_metal',4)){ this.showMsg('需要 金属×4'); return; }
                     g.buildVehicle('sled');
-                    this.showMsg('🛷 雪橇建造完成！');
+                    this.showMsg('🛷 雪橇完成！可去商业街');
+                }],
+                ['🏍 雪地摩托', ()=>{
+                    if(!g.inventory.has('mat_metal',15)){ this.showMsg('需要 金属×15'); return; }
+                    if(!g.inventory.has('part_circuit',5)){ this.showMsg('需要 电路板×5'); return; }
+                    if(!g.inventory.has('part_motor',1)){ this.showMsg('需要 马达×1'); return; }
+                    g.buildVehicle('snowmobile');
+                    this.showMsg('🏍 雪地摩托完成！可去医院');
                 }],
                 ['🌱 温室', ()=>{
                     if(!g.inventory.has('mat_wood',10)){ this.showMsg('需要 木材×10'); return; }
@@ -141,6 +137,11 @@ export class GameManagerComp extends Component {
                     if(!g.inventory.has('mat_soil',3)){ this.showMsg('需要 土壤×3'); return; }
                     g.buildGreenhouse(20,20);
                     this.showMsg('🌱 温室完成！');
+                }],
+                ['🌾 种植', ()=>{
+                    const err = g.greenhouse.plant(g.baseGrid);
+                    if(err) this.showMsg(err);
+                    else this.showMsg('🌱 已种植 5天后收获');
                 }],
                 ['📊 状态', ()=>{
                     const msg = `Day${g.time.day} 食物${g.inventory.totalFood()} 木${g.inventory.get('fuel_wood')} 煤${g.inventory.get('fuel_coal')} 建材木${g.inventory.get('mat_wood')} 金${g.inventory.get('mat_metal')}`;
@@ -160,14 +161,67 @@ export class GameManagerComp extends Component {
 
     private closeMenu(){ this.menuDom.style.display='none'; this.menuOpen=false; }
 
+    private showMap(){
+        this.closeMenu();
+        const g = this.game;
+        const regions = [
+            {id:'suburb',name:'郊区住宅',x:150,y:160,fuel:1,color:'#4a4'},
+            {id:'commercial',name:'商业街',x:100,y:80,fuel:3,color:'#fa4'},
+            {id:'hospital',name:'医院',x:250,y:100,fuel:3,color:'#f44'},
+        ];
+
+        let html = '<div style="font-size:16px;font-weight:bold;color:#ffcc44;margin-bottom:8px">🗺 世界地图</div>';
+        // 用绝对定位的 div 模拟地图
+        html += '<div style="position:relative;width:300px;height:220px;background:#1a2a3a;border:1px solid #445;border-radius:4px;margin:0 auto">';
+        // 基地
+        html += '<div style="position:absolute;left:145px;top:170px;color:#fff;font-size:18px" title="基地">🏠</div>';
+        html += '<div style="position:absolute;left:155px;top:172px;color:#888;font-size:10px">基地</div>';
+
+        for(const r of regions){
+            const dep = g.scavenge.getDepletion(r.id);
+            const locked = !g.vehicle.hasUnlock(r.id);
+            const barW = 40;
+            const filled = Math.round((1-dep/100)*barW);
+            const depColor = dep>80?'#f44':dep>50?'#fa4':'#4f4';
+            html += `<div style="position:absolute;left:${r.x}px;top:${r.y}px;color:${locked?'#555':r.color};font-size:16px;cursor:${locked?'not-allowed':'pointer'}"
+                onclick="window._scavengeMap('${r.id}')" title="${r.name}">📍</div>`;
+            html += `<div style="position:absolute;left:${r.x-15}px;top:${r.y+18}px;color:#ddeeff;font-size:10px">${r.name}</div>`;
+            // 枯竭度条
+            html += `<div style="position:absolute;left:${r.x-22}px;top:${r.y+30}px;width:${barW}px;height:4px;background:#333;border-radius:2px">
+                <div style="width:${filled}px;height:4px;background:${depColor};border-radius:2px"></div></div>`;
+            if(locked) html += `<div style="position:absolute;left:${r.x-15}px;top:${r.y+36}px;color:#f44;font-size:9px">🔒需载具</div>`;
+        }
+        html += '</div>';
+        html += '<div style="margin-top:6px;font-size:11px;color:#888">点击📍出发 | 绿色条=物资剩余 | 红条=枯竭</div>';
+
+        this.menuDom.innerHTML = html;
+        this.menuDom.style.display = 'flex';
+        this.menuOpen = true;
+        (this as any)._menuType = 'scavenge';
+
+        // 点击回调
+        (window as any)._scavengeMap = (region: string) => {
+            if(g.scavenge.active){ this.showMsg('已有探索队在外'); return; }
+            if(!g.vehicle.hasUnlock(region)){ this.showMsg('需要载具'); return; }
+            if(g.scavenge.getDepletion(region) >= 90){ this.showMsg('已枯竭'); return; }
+            if(!g.inventory.has('fuel_wood', g.scavenge.getRegion(region)?.fuel||0)){ this.showMsg('燃料不足'); return; }
+            g.scavengeCmd(region);
+            this.closeMenu();
+        };
+    }
+
     private toggleStorage(){
         const panel = this.storageDom;
         if(panel.style.display === 'flex'){
             panel.style.display = 'none'; return;
         }
         panel.style.display = 'flex';
-        const g = this.game;
-        const inv = g.inventory;
+        this.updateStorage();
+    }
+
+    private updateStorage(){
+        const panel = this.storageDom;
+        const inv = this.game.inventory;
         const cats: [string,string[]][] = [
             ['🍖 食物', ['food_can','food_bread','food_meat_frozen','food_veg','food_soup']],
             ['⛽ 燃料', ['fuel_wood','fuel_coal','fuel_propane','fuel_oil']],
@@ -281,12 +335,24 @@ export class GameManagerComp extends Component {
                 `建材 木${g.inventory.get('mat_wood')} 金${g.inventory.get('mat_metal')}${scavLine}${msg}`;
             this.draw();
             this.updateCharPanel();
+            if(this.storageDom.style.display === 'flex') this.updateStorage();
 
             // 弹窗计时
             if(this.popupTimer > 0){
                 this.popupTimer -= 0.5;
                 if(this.popupTimer <= 0) this.popupDom.style.display = 'none';
             }
+        }
+        // 里程碑
+        if(this.game.time.day === 10 && this.popupTimer <= 0 && !(this as any)._m10){
+            this.popupDom.innerHTML = '<div style="font-size:18px;color:#ffcc44">🎉 第10天</div>你还活着。<br>接下来的目标：<br>建温室自给食物';
+            this.popupDom.style.display = 'block'; this.popupTimer = 5;
+            (this as any)._m10 = true;
+        }
+        if(this.game.time.day === 20 && this.popupTimer <= 0 && !(this as any)._m20){
+            this.popupDom.innerHTML = '<div style="font-size:18px;color:#ffcc44">🎉 第20天</div>你已经站稳了脚跟。<br>目标：造雪地摩托探索医院';
+            this.popupDom.style.display = 'block'; this.popupTimer = 5;
+            (this as any)._m20 = true;
         }
         // 燃料耗尽警告
         if(this.game.inventory.get('fuel_wood') <= 0 && this.game.inventory.get('fuel_coal') <= 0 && this.popupTimer <= 0){
@@ -375,6 +441,20 @@ export class GameManagerComp extends Component {
             ctx.strokeRect(rx*cs, ry*cs, rw*cs, rh*cs);
             ctx.fillStyle = 'rgba(255,200,50,0.15)';
             ctx.fillRect(rx*cs, ry*cs, rw*cs, rh*cs);
+        }
+
+        // 暴风雪白雾
+        if(this.game.weather.state.isBlizzard){
+            ctx.fillStyle = 'rgba(255,255,255,0.25)';
+            ctx.fillRect(0, 0, this.mapSize*cs, this.mapSize*cs);
+            // 雪花粒子
+            ctx.fillStyle = 'rgba(255,255,255,0.6)';
+            const seed = Date.now()/1000;
+            for(let i=0;i<40;i++){
+                const sx = ((seed*137+i*73)%1000)/1000*this.mapSize*cs;
+                const sy = ((seed*251+i*47)%1000)/1000*this.mapSize*cs;
+                ctx.fillRect(sx, sy, 2, 2);
+            }
         }
 
         // 幸存者
