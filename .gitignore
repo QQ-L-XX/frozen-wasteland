@@ -5,6 +5,7 @@ local/
 profiles/
 .creator/
 node_modules/
+game/NewProject1/NewProject1/
 
 # IDE
 .vscode/
@@ -16,6 +17,10 @@ Thumbs.db
 
 # Build
 build/
+
+# Local assistant / private workspace notes
+.codex_tmp/
+.deepseek/
 
 # Prototype specific
 prototype/NewProject/library/

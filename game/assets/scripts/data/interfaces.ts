@@ -9,7 +9,8 @@ export enum BuildingType {
 }
 export interface BaseCell { x:number; y:number; terrain:TerrainType; building:Building|null; temperature:number }
 export interface Building { type:BuildingType; built:boolean; buildProgress:number; health:number }
-export interface Room { id:number; cells:{x:number;y:number}[]; insulationRate:number }
+export interface Room { id:number; cells:{x:number;y:number}[]; insulationRate:number; pipeNetworkId:number|null; centerTemp:number }
+export interface PipeNetwork { id:number; pipes:{x:number;y:number}[]; heatSource:{x:number;y:number;type:BuildingType}|null; connectedRooms:number[] }
 
 // ========== 幸存者 ==========
 export interface Survivor {

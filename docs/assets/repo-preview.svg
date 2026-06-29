@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640" role="img" aria-labelledby="title desc">
+  <title id="title">极寒末世 Frozen Wasteland</title>
+  <desc id="desc">A survival management game repository banner.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#06101d"/>
+      <stop offset="55%" stop-color="#0b2030"/>
+      <stop offset="100%" stop-color="#10151c"/>
+    </linearGradient>
+    <linearGradient id="ice" x1="0" x2="1">
+      <stop offset="0%" stop-color="#6fd3ff"/>
+      <stop offset="100%" stop-color="#b9f2ff"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <rect width="1280" height="640" fill="url(#bg)"/>
+  <path d="M0 510 C150 470 240 540 390 500 C550 456 700 530 855 490 C1020 446 1130 490 1280 448 L1280 640 L0 640 Z" fill="#d7f5ff" opacity="0.12"/>
+  <path d="M0 555 C140 520 290 570 450 535 C610 502 760 560 920 520 C1080 485 1180 525 1280 500 L1280 640 L0 640 Z" fill="#b7e8ff" opacity="0.18"/>
+  <g opacity="0.16" stroke="#7ccfff" stroke-width="2">
+    <path d="M108 80 h110 m-55 -55 v110 m-38 -92 l76 76 m0 -76 l-76 76"/>
+    <path d="M1090 92 h120 m-60 -60 v120 m-42 -102 l84 84 m0 -84 l-84 84"/>
+    <path d="M1010 420 h90 m-45 -45 v90 m-32 -76 l64 64 m0 -64 l-64 64"/>
+  </g>
+  <g transform="translate(92 118)">
+    <text x="0" y="0" fill="url(#ice)" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="82" font-weight="800" filter="url(#glow)">极寒末世</text>
+    <text x="4" y="66" fill="#c8e8f8" font-family="Segoe UI, Microsoft YaHei, sans-serif" font-size="30" letter-spacing="2">FROZEN WASTELAND</text>
+    <rect x="4" y="104" width="640" height="2" fill="#55bde8" opacity="0.9"/>
+    <text x="4" y="158" fill="#d8eef8" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="30">末日避难所经营 · 搜刮探索 · 长线聚落生存</text>
+    <text x="4" y="210" fill="#91bdd0" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="23">Cocos Creator 3.8.8 / TypeScript / v1.0 Candidate</text>
+  </g>
+  <g transform="translate(88 412)" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="24">
+    <rect x="0" y="0" width="196" height="58" rx="10" fill="#122b3d" stroke="#3e9ccc"/>
+    <text x="28" y="37" fill="#d9f4ff">温度与燃料</text>
+    <rect x="220" y="0" width="196" height="58" rx="10" fill="#122b3d" stroke="#3e9ccc"/>
+    <text x="248" y="37" fill="#d9f4ff">搜刮与战斗</text>
+    <rect x="440" y="0" width="196" height="58" rx="10" fill="#122b3d" stroke="#3e9ccc"/>
+    <text x="468" y="37" fill="#d9f4ff">世界与哨站</text>
+    <rect x="660" y="0" width="196" height="58" rx="10" fill="#122b3d" stroke="#3e9ccc"/>
+    <text x="688" y="37" fill="#d9f4ff">存档与长测</text>
+  </g>
+  <g transform="translate(900 168)">
+    <rect x="0" y="0" width="260" height="260" rx="18" fill="#071522" stroke="#45b9ea" opacity="0.9"/>
+    <rect x="32" y="44" width="196" height="132" rx="8" fill="#0d2233" stroke="#2e7092"/>
+    <path d="M64 176 v-72 h36 v72 M118 176 v-104 h36 v104 M172 176 v-56 h36 v56" fill="none" stroke="#7ee0ff" stroke-width="8" stroke-linejoin="round"/>
+    <circle cx="132" cy="220" r="18" fill="#54d18a"/>
+    <text x="62" y="228" fill="#d8f4ff" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="20">v1.0</text>
+    <text x="156" y="228" fill="#d8f4ff" font-family="Microsoft YaHei, Segoe UI, sans-serif" font-size="20">可测</text>
+  </g>
+</svg>

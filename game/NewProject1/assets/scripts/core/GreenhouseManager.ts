@@ -13,7 +13,7 @@ export class GreenhouseManager {
     plant(grid: BaseCell[][]): string|null {
         if(!this.built) return '需要先建温室';
         const gt=grid[this.y]?.[this.x]?.temperature??-28;
-        if(gt<2) return `温室温度 ${gt.toFixed(1)}°C，需要 ≥ +2°C`;
+        if(gt<-8) return `温室温度 ${gt.toFixed(1)}°C，需要 ≥ -8°C`;
         if(this.planted) return '已有作物在生长中';
         this.planted=true; this.days=0;
         return null;
@@ -24,7 +24,7 @@ export class GreenhouseManager {
         const gt=grid[this.y]?.[this.x]?.temperature??-28;
         if(gt>=2){
             this.days++;
-            if(this.days>=5){ this.planted=false; addInventory('food_veg',8); return '🌾 土豆成熟！收获 食物×8'; }
+            if(this.days>=4){ this.planted=false; addInventory('food_veg',15); return '🌾 土豆成熟！收获 食物×15'; }
         }else if(gt<-5){ this.planted=false; return '❄ 作物冻死了'; }
         return null;
     }

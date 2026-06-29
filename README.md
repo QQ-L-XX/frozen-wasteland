@@ -1,0 +1,129 @@
+# 极寒末世
+
+![极寒末世仓库预览](docs/assets/repo-preview.svg)
+
+> Cocos Creator 制作的末日避难所经营游戏。玩家需要在极寒天气中管理幸存者、燃料、食物、建筑、搜刮队和外部世界网络，让一个临时避难所逐步成长为能长期存活的聚落。
+
+![Cocos Creator](https://img.shields.io/badge/Cocos%20Creator-3.8.8-55c2ff)
+![TypeScript](https://img.shields.io/badge/TypeScript-gameplay-3178c6)
+![Status](https://img.shields.io/badge/status-v1.0%20candidate-50c878)
+![Platform](https://img.shields.io/badge/platform-Windows%20Editor-lightgrey)
+
+## 当前状态
+
+`v1.0 Candidate`：核心玩法闭环已成型，正在做长测、数值和平衡打磨。当前版本适合试玩、代码审阅和继续开发，不代表最终发行版。
+
+| 模块 | 状态 |
+|---|---|
+| 基础生存闭环 | 已成型，第一周 P0 逻辑烟测通过 |
+| 搜刮系统 | 已有 8 个区域模板、战斗、事件、撤离和结算 |
+| 基地经营 | 建造、供暖、温室、科技、载具、仓储可玩 |
+| 存档读档 | 自动/手动存档、旧档兼容、坏档提示已加固 |
+| 长线系统 | 世界影响力、外部哨站、生产链、聚落等级已有骨架 |
+| 发行打磨 | 仍需实机长测、截图、音频、美术和最终平衡 |
+
+## 玩法亮点
+
+- **极寒生存压力**：室外温度、暴风雪、燃料消耗、室内热扩散和建筑保温共同影响幸存者生存。
+- **避难所经营**：墙、门、床、管道、煤炉、锅炉、温室、工坊、无线电、炮塔、地热井等设施逐步解锁。
+- **搜刮探索**：郊区、荒野、商业街、仓储区、医院、工厂、军事基地、研究所拥有不同地图结构、风险和掉落。
+- **幸存者系统**：幸存者有健康、体温、士气、属性、特质、工作分配和关系状态。
+- **长线目标**：从 Lv1 避难所成长为更稳定的雪原据点、地下聚落和新文明核心。
+- **内置 QA 面板**：游戏内可查看 v1.0 完成度，快速执行测试包、快进、存读测试和一周烟测。
+
+## 快速开始
+
+### 环境
+
+- Windows
+- Cocos Creator `3.8.8`
+- Node.js 仅用于本地 TypeScript 静态检查，运行游戏主要通过 Cocos Creator 编辑器。
+
+### 打开工程
+
+用 Cocos Creator 打开：
+
+```text
+game/NewProject1
+```
+
+入口场景：
+
+```text
+game/NewProject1/assets/main.scene
+```
+
+在 Cocos Creator 中点击预览即可运行。预览地址通常是：
+
+```text
+http://127.0.0.1:7456/
+```
+
+### 静态检查
+
+在 `game/NewProject1` 目录执行：
+
+```powershell
+& 'C:\Users\QI CHU\.cache\codex-runtimes\codex-primary-runtime\dependencies\node\bin\node.exe' 'C:\ProgramData\cocos\editors\Creator\3.8.8\resources\resources\3d\engine\node_modules\typescript\bin\tsc' --noEmit --pretty false --skipLibCheck --lib ES2019,DOM
+```
+
+当前验证结果：项目 TypeScript 检查通过。
+
+## 游戏内 QA
+
+预览中打开 `基地 -> ✅完成度`，可以使用：
+
+- `🧪 测试包`：加入一组 v1.0 验证用资源。
+- `⏩ 快进7天`：执行真实每日结算的快进。
+- `💾 存读测试`：写入本地存档并读取验证。
+- `✅ 一周烟测`：临时演练第一周 P0 路线，结束后恢复当前局和本地存档。
+
+浏览器控制台也提供：
+
+```js
+window._frostDebug.kit()
+window._frostDebug.days(7)
+window._frostDebug.roundtrip()
+window._frostDebug.p0()
+window._frostDebug.status()
+```
+
+## 项目结构
+
+```text
+.
+├─ game/NewProject1/                 # Cocos Creator 3.8.8 主工程
+│  ├─ assets/main.scene              # 入口场景
+│  └─ assets/scripts/
+│     ├─ GameManagerComp.ts          # DOM UI、输入、面板、预览调试入口
+│     ├─ core/                       # 游戏核心系统
+│     └─ data/                       # 类型、数据、故事
+├─ docs/                             # 开发规格与计划
+├─ 设计文档/                          # 玩法设计文档
+├─ 开发计划.md
+├─ 开发日志.md
+├─ 进度总览.md
+└─ CODEX.md                          # Codex 工作副本说明
+```
+
+## 路线图
+
+- `v1.0`：稳定试玩版，完成第一周闭环、存档读档、搜刮闭环、仓库页面和发布说明。
+- `v1.1`：强化中期世界网络，扩展哨站、生产链和势力事件。
+- `v1.2`：补幸存者个人线、长期灾变、挑战剧本和多结局内容。
+- `v2.0`：面向 80-100 小时长线目标的完整内容扩容。
+
+## 发布说明
+
+见 [docs/RELEASE_NOTES_v1.0.md](docs/RELEASE_NOTES_v1.0.md)。
+
+## 开发记录
+
+- [进度总览.md](进度总览.md)
+- [开发计划.md](开发计划.md)
+- [开发日志.md](开发日志.md)
+- [CODEX.md](CODEX.md)
+
+## 许可
+
+当前仓库尚未选择开源许可证。若要公开发布并允许他人使用/修改代码，建议在发布前补充 `LICENSE`。
