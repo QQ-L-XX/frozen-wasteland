@@ -34,6 +34,7 @@
 - **幸存者系统**：幸存者有健康、体温、士气、属性、特质、工作分配和关系状态。
 - **长线目标**：从 Lv1 避难所成长为更稳定的雪原据点、地下聚落和新文明核心。
 - **内置 QA 面板**：游戏内可查看 v1.0 完成度，快速执行测试包、快进、存读测试和一周烟测。
+- **版本计划面板**：系统菜单内可查看当前版本、下一版本、验收标准和 GitHub 更新节奏。
 
 ### 快速开始
 
@@ -227,6 +228,10 @@ window._frostDebug.roundtrip()
 window._frostDebug.p0()
 window._frostDebug.status()
 ```
+
+### Version Panel
+
+Open `System -> 📋 Version` in the preview build to inspect the current version, next milestone, acceptance criteria, and GitHub update rhythm.
 
 ### Project Layout
 

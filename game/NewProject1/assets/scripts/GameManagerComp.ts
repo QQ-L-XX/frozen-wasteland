@@ -3,6 +3,7 @@ import { GameManager } from './core/GameManager';
 import { WorkType } from './core/SurvivorManager';
 import { getRandomStory, StoryEntry, STORIES } from './data/Stories';
 import { OutpostId } from './core/OutpostManager';
+import { VersionManager } from './core/VersionManager';
 
 const { ccclass } = _decorator;
 
@@ -89,6 +90,7 @@ export class GameManagerComp extends Component {
     private menuOutsideClickSeq = 0;
     private scavReturnConfirm = false;
     private readonly uiOwnerId = `frozen-ui-${Date.now()}-${Math.floor(Math.random()*100000)}`;
+    private readonly version = new VersionManager();
 
     showMsg(msg: string){ this.lastMessage = msg; this.messageTimer = 5; }
 
@@ -715,6 +717,7 @@ body { background: var(--f-bg); margin: 0; overflow: hidden; }
                 ['💾 存档', ()=>{ this.onPauseAction('save'); this.closeMenu(); }],
                 ['📂 读档', ()=>{ this.onPauseAction('load'); this.closeMenu(); }],
                 ['🏠 返回标题', ()=>{ this.onPauseAction('title'); this.closeMenu(); }],
+                ['📋 版本', ()=>{ this.showVersionPanel(); }],
             ];
             for(const d of diffs){
                 items.push([`${d.label}${cur===d.id?' ✓':''}`, ()=>{ this.onPauseAction('setDiff'); this.game.difficulty = d.id as any; this.game.combat.diffMult = this.game.diffMult(); localStorage.setItem('frost_diff', d.id); this.closeMenu(); this.showMsg(`难度: ${d.label}`); }]);
@@ -1324,6 +1327,36 @@ body { background: var(--f-bg); margin: 0; overflow: hidden; }
     }
 
     // ============================== v1 完成度 ==============================
+    private showVersionPanel(){
+        this.menuDom.innerHTML = '';
+        this.menuDom.style.display = 'flex';
+        this.menuDom.dataset.type = 'version';
+        this.menuDom.style.width = '560px';
+        this.menuDom.style.marginLeft = '-280px';
+
+        let html = '<div style="text-align:left;width:100%;max-height:460px;overflow-y:auto;padding-right:4px">';
+        html += `<div style="display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:8px">`+
+            `<span style="color:var(--f-accent);font-size:14px;font-weight:bold">📋 版本计划</span>`+
+            `<span style="color:var(--f-warn);font-size:11px">${this.version.current} → ${this.version.next}</span></div>`;
+        html += `<div style="color:var(--f-dim);font-size:10px;line-height:1.5;margin-bottom:8px">GitHub：${this.version.github}</div>`;
+
+        for(const m of this.version.milestones){
+            const color = this.version.getStatusColor(m.status);
+            html += `<div style="padding:7px 0;border-bottom:1px solid var(--f-border)">`+
+                `<div style="display:flex;justify-content:space-between;gap:10px;align-items:center;color:${color}">`+
+                `<span style="font-weight:bold">${m.version} · ${m.title}</span>`+
+                `<span style="font-size:10px">${this.version.getStatusLabel(m.status)}</span></div>`;
+            html += `<div style="color:var(--f-text);font-size:10px;line-height:1.45;margin-top:4px">目标：${m.goals.join(' / ')}</div>`;
+            html += `<div style="color:var(--f-dim);font-size:10px;line-height:1.45;margin-top:2px">验收：${m.acceptance.join('；')}</div>`;
+            html += '</div>';
+        }
+
+        html += '<div style="margin-top:10px;padding:7px;background:rgba(0,0,0,0.25);border:1px solid var(--f-border);border-radius:6px;color:var(--f-dim);font-size:10px;line-height:1.5">每完成一个版本节点，会同步提交并推送到 GitHub；正式版本再打 tag。</div>';
+        html += '</div>';
+        this.menuDom.innerHTML = html;
+        this.bindMenuOutsideClose();
+    }
+
     private showCompletionPanel(){
         const status = this.game.getCompletionStatus();
         this.menuDom.innerHTML = '';

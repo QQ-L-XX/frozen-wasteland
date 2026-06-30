@@ -21,6 +21,12 @@
 4. `v1.1.0`：扩展中期生产链与世界网络节奏。
 5. `v1.2.0`：补角色线、灾变和挑战剧本。
 
+## 已接入游戏内
+
+- 系统菜单新增 `📋 版本` 面板。
+- 面板显示当前版本、下一版本、GitHub 地址、各版本状态、目标和验收标准。
+- 后续每完成一个版本节点，会同步提交并推送到 GitHub；正式版本再打 tag。
+
 ## English Plan
 
 | Version | Positioning | Main Goals | Acceptance Criteria | Status |
@@ -39,3 +45,9 @@
 3. `v1.0.0`: Decide the license policy.
 4. `v1.1.0`: Expand mid-game production chains and world-network pacing.
 5. `v1.2.0`: Add survivor arcs, long-term disasters, and challenge scenarios.
+
+## In-Game Integration
+
+- Added a `📋 Version` panel to the system menu.
+- The panel shows the current version, next milestone, GitHub URL, milestone status, goals, and acceptance criteria.
+- Each completed version milestone should be committed and pushed to GitHub; formal versions should also receive tags.
