@@ -8,10 +8,11 @@
 - [x] README 已补充项目介绍、运行方式、QA 入口和路线图。
 - [x] 版本计划表已补充：`docs/VERSION_PLAN.md`。
 - [x] Day 1-7 人工长测记录表已补充：`docs/QA_DAY1_7_PLAYTEST.md`。
+- [x] README 已补截图展示区，截图命名说明见 `docs/assets/screenshots/README.md`。
 - [x] v1.0 发布说明已补充。
 - [x] `.gitignore` 已忽略 Cocos 缓存、临时目录和嵌套误复制工程。
 - [ ] 按 `docs/QA_DAY1_7_PLAYTEST.md` 完成 Cocos 预览人工长测 Day 1 到 Day 7。
-- [ ] 补至少 2-4 张真实游戏截图。
+- [ ] 按 `docs/assets/screenshots/README.md` 补至少 2-4 张真实游戏截图。
 - [ ] 选择开源许可证或明确保留版权。
 
 ## GitHub 仓库设置建议

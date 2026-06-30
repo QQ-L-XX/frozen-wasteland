@@ -27,7 +27,7 @@
 
 ### 截图清单
 
-截图建议放到 `docs/assets/screenshots/`。
+截图建议放到 `docs/assets/screenshots/`，命名规则见 `docs/assets/screenshots/README.md`。
 
 - [ ] `01-title-or-start.png`：标题/开局界面。
 - [ ] `02-base-hud.png`：基地 HUD 和建造区。
@@ -72,7 +72,7 @@
 
 ### Screenshot List
 
-Recommended location: `docs/assets/screenshots/`.
+Recommended location: `docs/assets/screenshots/`. See `docs/assets/screenshots/README.md` for naming notes.
 
 - [ ] `01-title-or-start.png`: title or new-game screen.
 - [ ] `02-base-hud.png`: base HUD and build area.

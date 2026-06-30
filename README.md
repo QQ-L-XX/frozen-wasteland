@@ -26,6 +26,18 @@
 | 长线系统 | 世界影响力、外部哨站、生产链、聚落等级已有骨架 |
 | 发行打磨 | 仍需实机长测、截图、音频、美术和最终平衡 |
 
+### 截图展示
+
+> 当前截图位使用仓库 SVG 预览图占位。真实游戏截图请放入 `docs/assets/screenshots/`，建议文件名见 [截图目录说明](docs/assets/screenshots/README.md)。
+
+| 标题/开局 | 基地 HUD |
+|---|---|
+| ![标题或开局界面占位](docs/assets/repo-preview.svg) | ![基地 HUD 占位](docs/assets/repo-preview.svg) |
+
+| 搜刮地图 | 完成度面板 |
+|---|---|
+| ![搜刮地图占位](docs/assets/repo-preview.svg) | ![完成度面板占位](docs/assets/repo-preview.svg) |
+
 ### 玩法亮点
 
 - **极寒生存压力**：室外温度、暴风雪、燃料消耗、室内热扩散和建筑保温共同影响幸存者生存。
@@ -152,6 +164,18 @@ window._frostDebug.status()
 | Save/load | Auto/manual saves, old-save compatibility, and corrupted-save handling are hardened |
 | Long-term systems | World influence, outposts, production chains, and settlement levels have a playable skeleton |
 | Release polish | Still needs manual playtesting, screenshots, audio, art polish, and final balance |
+
+### Screenshots
+
+> The current slots use the repository SVG preview as placeholders. Place real gameplay screenshots in `docs/assets/screenshots/`; recommended filenames are listed in the [screenshot directory notes](docs/assets/screenshots/README.md).
+
+| Title / Start | Base HUD |
+|---|---|
+| ![Title or start screen placeholder](docs/assets/repo-preview.svg) | ![Base HUD placeholder](docs/assets/repo-preview.svg) |
+
+| Scavenging Map | Completion Panel |
+|---|---|
+| ![Scavenging map placeholder](docs/assets/repo-preview.svg) | ![Completion panel placeholder](docs/assets/repo-preview.svg) |
 
 ### Highlights
 

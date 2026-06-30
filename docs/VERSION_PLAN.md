@@ -16,7 +16,7 @@
 ## 当前优先级
 
 1. `v1.0.0`：按 `docs/QA_DAY1_7_PLAYTEST.md` 完成 Cocos 预览人工长测 Day 1 到 Day 7。
-2. `v1.0.0`：补真实截图，替换 README 的临时 SVG 主视觉或增加截图区。
+2. `v1.0.0`：按 `docs/assets/screenshots/README.md` 补真实截图，替换 README 的临时 SVG 占位图。
 3. `v1.0.0`：确认许可证策略。
 4. `v1.1.0`：扩展中期生产链与世界网络节奏。
 5. `v1.2.0`：补角色线、灾变和挑战剧本。
@@ -41,7 +41,7 @@
 ## Current Priorities
 
 1. `v1.0.0`: Complete the manual Cocos preview Day 1-7 checklist in `docs/QA_DAY1_7_PLAYTEST.md`.
-2. `v1.0.0`: Add real gameplay screenshots and update the README visual section.
+2. `v1.0.0`: Add real gameplay screenshots according to `docs/assets/screenshots/README.md` and replace the temporary README SVG placeholders.
 3. `v1.0.0`: Decide the license policy.
 4. `v1.1.0`: Expand mid-game production chains and world-network pacing.
 5. `v1.2.0`: Add survivor arcs, long-term disasters, and challenge scenarios.
