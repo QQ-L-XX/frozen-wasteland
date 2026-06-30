@@ -49,6 +49,8 @@
 - `v1.2`：补长期灾变、幸存者个人线和挑战剧本。
 - `v2.0`：面向 80-100 小时目标扩展终局路线与可重复内容。
 
+详细版本计划见 [VERSION_PLAN.md](VERSION_PLAN.md)。
+
 ## English
 
 ### Positioning
@@ -95,3 +97,5 @@ This is the `v1.0 Candidate` build of Frozen Wasteland. The goal of this version
 - `v1.1`: improve mid-game world networking and production-chain pacing.
 - `v1.2`: add long-term disasters, survivor personal storylines, and challenge scenarios.
 - `v2.0`: expand endings and repeatable content toward the 80-100 hour target.
+
+See the detailed plan in [VERSION_PLAN.md](VERSION_PLAN.md).

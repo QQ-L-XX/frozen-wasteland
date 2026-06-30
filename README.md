@@ -76,6 +76,12 @@ powershell -ExecutionPolicy Bypass -File ../../tools/qa/run-tsc.ps1
 在 `game/NewProject1` 目录执行：
 
 ```powershell
+powershell -ExecutionPolicy Bypass -File ../../tools/qa/run-all.ps1
+```
+
+也可以单独运行：
+
+```powershell
 powershell -ExecutionPolicy Bypass -File ../../tools/qa/run-p0-smoke.ps1
 ```
 
@@ -124,6 +130,8 @@ window._frostDebug.status()
 - `v1.1`：强化中期世界网络，扩展哨站、生产链和势力事件。
 - `v1.2`：补幸存者个人线、长期灾变、挑战剧本和多结局内容。
 - `v2.0`：面向 80-100 小时长线目标的完整内容扩容。
+
+详细版本计划见 [docs/VERSION_PLAN.md](docs/VERSION_PLAN.md)。
 
 ## English
 
@@ -190,6 +198,12 @@ Current verification result: the project TypeScript check passes.
 Run this from `game/NewProject1`:
 
 ```powershell
+powershell -ExecutionPolicy Bypass -File ../../tools/qa/run-all.ps1
+```
+
+You can also run only the P0 smoke test:
+
+```powershell
 powershell -ExecutionPolicy Bypass -File ../../tools/qa/run-p0-smoke.ps1
 ```
 
@@ -239,6 +253,8 @@ window._frostDebug.status()
 - `v1.2`: expand survivor personal stories, long-term disasters, challenge scenarios, and endings.
 - `v2.0`: expand toward an 80-100 hour long-term survival experience.
 
+See the detailed version plan in [docs/VERSION_PLAN.md](docs/VERSION_PLAN.md).
+
 ## Release Notes / 发布说明
 
 See [docs/RELEASE_NOTES_v1.0.md](docs/RELEASE_NOTES_v1.0.md).
@@ -246,6 +262,7 @@ See [docs/RELEASE_NOTES_v1.0.md](docs/RELEASE_NOTES_v1.0.md).
 ## Development Records / 开发记录
 
 - [进度总览.md](进度总览.md)
+- [版本计划 / Version Plan](docs/VERSION_PLAN.md)
 - [开发计划.md](开发计划.md)
 - [开发日志.md](开发日志.md)
 - [CODEX.md](CODEX.md)

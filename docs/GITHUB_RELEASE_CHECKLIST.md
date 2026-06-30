@@ -4,8 +4,9 @@
 
 - [x] TypeScript 静态检查通过。
 - [x] P0 一周逻辑烟测通过。
-- [x] 仓库内置 `tools/qa/run-tsc.ps1` 和 `tools/qa/run-p0-smoke.ps1`。
+- [x] 仓库内置 `tools/qa/run-all.ps1`、`tools/qa/run-tsc.ps1` 和 `tools/qa/run-p0-smoke.ps1`。
 - [x] README 已补充项目介绍、运行方式、QA 入口和路线图。
+- [x] 版本计划表已补充：`docs/VERSION_PLAN.md`。
 - [x] v1.0 发布说明已补充。
 - [x] `.gitignore` 已忽略 Cocos 缓存、临时目录和嵌套误复制工程。
 - [ ] Cocos 预览人工长测 Day 1 到 Day 7。
