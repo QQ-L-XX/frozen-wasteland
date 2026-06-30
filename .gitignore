@@ -17,6 +17,7 @@ Thumbs.db
 
 # Build
 build/
+.qa_tmp/
 
 # Local assistant / private workspace notes
 .codex_tmp/

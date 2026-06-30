@@ -66,10 +66,20 @@ http://127.0.0.1:7456/
 在 `game/NewProject1` 目录执行：
 
 ```powershell
-& 'C:\Users\QI CHU\.cache\codex-runtimes\codex-primary-runtime\dependencies\node\bin\node.exe' 'C:\ProgramData\cocos\editors\Creator\3.8.8\resources\resources\3d\engine\node_modules\typescript\bin\tsc' --noEmit --pretty false --skipLibCheck --lib ES2019,DOM
+powershell -ExecutionPolicy Bypass -File ../../tools/qa/run-tsc.ps1
 ```
 
 当前验证结果：项目 TypeScript 检查通过。
+
+### 发布前烟测
+
+在 `game/NewProject1` 目录执行：
+
+```powershell
+powershell -ExecutionPolicy Bypass -File ../../tools/qa/run-p0-smoke.ps1
+```
+
+该命令会运行第一周 P0 逻辑烟测，并确认烟测不会污染当前局或本地存档。
 
 ### 游戏内 QA
 
@@ -170,10 +180,20 @@ http://127.0.0.1:7456/
 Run this from `game/NewProject1`:
 
 ```powershell
-& 'C:\Users\QI CHU\.cache\codex-runtimes\codex-primary-runtime\dependencies\node\bin\node.exe' 'C:\ProgramData\cocos\editors\Creator\3.8.8\resources\resources\3d\engine\node_modules\typescript\bin\tsc' --noEmit --pretty false --skipLibCheck --lib ES2019,DOM
+powershell -ExecutionPolicy Bypass -File ../../tools/qa/run-tsc.ps1
 ```
 
 Current verification result: the project TypeScript check passes.
+
+### Release Smoke Test
+
+Run this from `game/NewProject1`:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File ../../tools/qa/run-p0-smoke.ps1
+```
+
+This command runs the first-week P0 logic smoke test and verifies that the smoke test does not mutate the active game or local save.
 
 ### In-Game QA
 

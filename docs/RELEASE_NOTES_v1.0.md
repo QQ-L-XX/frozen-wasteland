@@ -21,6 +21,7 @@
 
 - TypeScript 静态检查通过。
 - P0 一周逻辑烟测通过。
+- 仓库内置 `tools/qa/run-tsc.ps1` 和 `tools/qa/run-p0-smoke.ps1`，便于发布前复测。
 - P0 烟测为非破坏式，运行后不会污染当前局和本地 `frost_save`。
 - QA 存读测试会写入并读取本地存档，成功后持久化验证状态。
 
@@ -67,6 +68,7 @@ This is the `v1.0 Candidate` build of Frozen Wasteland. The goal of this version
 
 - TypeScript static check passes.
 - P0 first-week logic smoke test passes.
+- The repository now includes `tools/qa/run-tsc.ps1` and `tools/qa/run-p0-smoke.ps1` for release verification.
 - The P0 smoke test is non-destructive and does not mutate the active game or local `frost_save`.
 - The QA save/load test writes and reads a local save, then persists the verification state.
 
