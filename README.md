@@ -88,6 +88,10 @@ powershell -ExecutionPolicy Bypass -File ../../tools/qa/run-p0-smoke.ps1
 
 该命令会运行第一周 P0 逻辑烟测，并确认烟测不会污染当前局或本地存档。
 
+### 人工长测记录
+
+`v1.0.0` 的 Day 1-7 人工长测表见 [docs/QA_DAY1_7_PLAYTEST.md](docs/QA_DAY1_7_PLAYTEST.md)。真实截图建议放入 `docs/assets/screenshots/`。
+
 ### 游戏内 QA
 
 预览中打开 `基地 -> ✅完成度`，可以使用：
@@ -209,6 +213,10 @@ powershell -ExecutionPolicy Bypass -File ../../tools/qa/run-p0-smoke.ps1
 ```
 
 This command runs the first-week P0 logic smoke test and verifies that the smoke test does not mutate the active game or local save.
+
+### Manual Playtest Log
+
+The `v1.0.0` Day 1-7 manual playtest checklist is available at [docs/QA_DAY1_7_PLAYTEST.md](docs/QA_DAY1_7_PLAYTEST.md). Real gameplay screenshots should be placed in `docs/assets/screenshots/`.
 
 ### In-Game QA
 
